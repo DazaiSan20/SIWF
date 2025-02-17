@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-class UserController extends Controller
+use App\Models\User;
+class ManagementUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return "Ambil data user"  ;//
+        // return "Halo ini adalah method index, dalam controller ManagementUser."  ;//
+        return "Method ini nantinya akan digunakan untuk mengambil semua data user";
     }
 
     /**
@@ -19,7 +20,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return "";//
+        return "Method ini nantinya akan digunakan untuk menampilkan form untuk menambah data user";//
     }
 
     /**
@@ -27,7 +28,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Method ini nantinya akan digunakan untuk menciptakan data user yang baru";//
     }
 
     /**
@@ -35,7 +36,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return "Method ini nantinya akan digunakan untuk mengambil satu data user dengan id =" . $id;//
     }
 
     /**
@@ -43,7 +44,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return "Method ini nantinya akan digunakan untuk menampilkan form untuk mengubah data edit dengan id =" . $id;//
     }
 
     /**
@@ -51,7 +52,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return "Method ini nantinya akan digunakan untuk mengubah data user dengan id =" . $id;//
     }
 
     /**
@@ -59,6 +60,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "Method ini nantinya akan digunakan untuk menghapus data user dengan id =" . $id;//
     }
 }
