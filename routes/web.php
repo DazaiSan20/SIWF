@@ -1,56 +1,62 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\HomeController;
 
-// 1. Route Dasar
+// Route GET
 Route::get('/', function () {
     return view('welcome');
 });
 
-// 2. Route dengan Parameter
-Route::get('/user/{id}', function ($id) {
-    return 'User ID: ' . $id;
+// Route POST
+Route::post('/submit', function () {
+    return 'Data berhasil dikirim!';
 });
 
-// 3. Route dengan Parameter Opsional
+// Route PUT
+Route::put('/update/{id}', function ($id) {
+    return "Data dengan ID $id berhasil diperbarui!";
+});
+
+// Route DELETE
+Route::delete('/delete/{id}', function ($id) {
+    return "Data dengan ID $id berhasil dihapus!";
+});
+
+// Route dengan Controller
+use App\Http\Controllers\HomeController;
+Route::get('/home', [HomeController::class, 'index']);
+
+// Route dengan Parameter
+Route::get('/user/{name}', function ($name) {
+    return "Halo, $name!";
+});
+
+// Route dengan Parameter Opsional
 Route::get('/profile/{name?}', function ($name = 'Guest') {
-    return 'Profile Name: ' . $name;
+    return "Profil: $name";
 });
 
-// 4. Route dengan Regular Expression Constraints
-Route::get('/post/{id}', function ($id) {
-    return 'Post ID: ' . $id;
-})->where('id', '[0-9]+');
-
-// 5. Named Route
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-
-// 6. Group Routing dengan Middleware
+// Route Group (dengan Middleware)
 Route::middleware(['auth'])->group(function () {
-    Route::get('/settings', function () {
-        return 'Settings Page';
-    });
-    Route::get('/profile', function () {
-        return 'Profile Page';
+    Route::get('/dashboard', function () {
+        return 'Dashboard User';
     });
 });
 
-// 7. Redirect Route
-Route::redirect('/old-page', '/new-page', 301);
-
-// 8. Route View
-Route::view('/about', 'about', ['title' => 'About Us']);
-
-// 9. CSRF Protection dalam Form
-Route::post('/submit-form', function (Illuminate\Http\Request $request) {
-    return 'Form Submitted!';
-})->middleware('csrf');
-
-// 10. API Route dengan Prefix
-Route::prefix('api')->group(function () {
-    Route::get('/users', [UserController::class, 'index']);
+// Route dengan Prefix
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return 'Dashboard Admin';
+    });
 });
+
+// Route Redirect
+Route::redirect('/old-route', '/new-route');
+
+// Route Fallback (Jika Tidak Ada Route yang Cocok)
+Route::fallback(function () {
+    return 'Halaman tidak ditemukan!';
+});
+
 
 ?>
