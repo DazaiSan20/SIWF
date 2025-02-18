@@ -160,6 +160,8 @@ Route::get("/home", function(){
     return view("home");
 });
 
+// BATAS AKHIR ACARA 6
+
 // Route Fallback (Jika Tidak Ada Route yang Cocok)
 Route::fallback(function () {
     return 'Halaman tidak ditemukan!';
