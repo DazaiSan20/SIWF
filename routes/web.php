@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ManagementUserController;
+use App\Http\Controllers\frontend\HomeController;
 
 // ACARA 3
 
@@ -71,7 +72,7 @@ Route::get('user/{id}/{name}', function ($id, $name) {
     'id' => '[0-9]+',
     'name' => '[a-z]+'
 ]);
-// BATAS AKHIR ACARA 1
+// BATAS AKHIR ACARA 3
 
 // ACARA 4
 // Named Route untuk halaman profil pengguna
@@ -162,10 +163,14 @@ Route::get("/home", function(){
 
 // BATAS AKHIR ACARA 6
 
+Route::group(['namespace' => 'App\Http\Controllers\frontend'], function() {
+    Route::resource('homem', HomeController::class);
+
+});
+
 // Route Fallback (Jika Tidak Ada Route yang Cocok)
 Route::fallback(function () {
     return 'Halaman tidak ditemukan!';
 });
-
 
 ?>
