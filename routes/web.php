@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\backend\DashboardController;
 
 // ACARA 3
 
@@ -96,12 +97,12 @@ Route::get('/redirect-user/{id}', function ($id) {
 });
 
 // Tampilkan halaman login
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('/log', function () {
+    return view('log');
+})->name('log');
 
 // Proses autentikasi
-Route::post('/login', function (Request $request) {
+Route::post('/log', function (Request $request) {
     $credentials = $request->validate([
         'email' => 'required|email',
         'password' => 'required'
@@ -112,7 +113,7 @@ Route::post('/login', function (Request $request) {
     } else {
         return back()->withErrors(['email' => 'Email atau password salah']);
     }
-})->name('auth.login');
+})->name('auth.log');
 
 // Route Dashboard (hanya untuk yang sudah login)
 Route::middleware(['auth'])->group(function () {
@@ -127,7 +128,7 @@ Route::middleware(['auth'])->group(function () {
 
 // Namespace
 Route::prefix('admin')->group(function () {
-    Route::get('/home', [AdminController::class, 'index']);
+    Route::get('/home2', [AdminController::class, 'index']);
 });
 
 Route::domain('admin.example.com')->group(function () {
@@ -157,20 +158,32 @@ Route::resource('users', ManagementUserController::class);
 
 // ACARA 6
 
-Route::get("/home", function(){
-    return view("home");
+Route::get("/home1", function(){
+    return view("home1");
 });
 
 // BATAS AKHIR ACARA 6
 
+// ACARA 7
 Route::group(['namespace' => 'App\Http\Controllers\frontend'], function() {
     Route::resource('homem', HomeController::class);
 
 });
+// BATAS AKHIR ACARA 7
+
+// ACARA 8
+Route::group(['namespace' => 'App\Http\Controllers\backend'], function() {
+    Route::resource('dash', DashboardController::class);
+
+});
+// BATAS AKHIR ACARA 8
 
 // Route Fallback (Jika Tidak Ada Route yang Cocok)
 Route::fallback(function () {
     return 'Halaman tidak ditemukan!';
 });
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 ?>
