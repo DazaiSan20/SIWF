@@ -174,6 +174,8 @@ Route::group(['namespace' => 'App\Http\Controllers\frontend'], function() {
 // ACARA 8
 Route::group(['namespace' => 'App\Http\Controllers\backend'], function() {
     Route::resource('dash', DashboardController::class);
+    Route::resource('pengalaman_kerja',PengalamanKerjaController::class);
+    Route::resource('pendidikan',PendidikanController::class);
 
 });
 // BATAS AKHIR ACARA 8
@@ -186,4 +188,6 @@ Route::fallback(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 ?>
