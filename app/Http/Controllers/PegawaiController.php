@@ -16,7 +16,7 @@ class PegawaiController extends Controller
 
     public function proses(Request $request) {
         $nama = $request->input('nama');
-        $umur = $request->input('umur');
-        return "Nama: $nama, Umur: $umur";
+        $umur = $request->input('alamat');
+        return "Nama: $nama, alamat: $alamat";
     }
 }

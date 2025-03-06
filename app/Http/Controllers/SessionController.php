@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class SessionController extends Controller
 {
     public function create(Request $request) {
-        $request->session()->put('nama', 'Laravel Session');
+        $request->session()->put('nama', 'Politeknik Negeri Jember');
         return "Session telah ditambahkan";
     }
 

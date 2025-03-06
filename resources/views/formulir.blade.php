@@ -2,7 +2,7 @@
     {{ csrf_field() }}
     <label>Nama:</label>
     <input type="text" name="nama"><br>
-    <label>Umur:</label>
-    <input type="text" name="umur"><br>
+    <label>Alamat:</label>
+    <input type="text" name="alamat"><br>
     <input type="submit" value="Simpan">
 </form>
