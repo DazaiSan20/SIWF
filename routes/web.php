@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ManagementUserController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\PegawaiController;
 
 // ACARA 3
 
@@ -189,5 +191,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// ACARA 17
 
-?>
+Route::get('/session/create', [SessionController::class, 'create']);
+Route::get('/session/show', [SessionController::class, 'show']);
+Route::get('/session/delete', [SessionController::class, 'delete']);
+
+Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);
+Route::get('/formulir', [PegawaiController::class, 'formulir']);
+Route::post('/formulir/proses', [PegawaiController::class, 'proses']);

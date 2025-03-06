@@ -66,20 +66,3 @@
     </section>
 </section>
 @endsection
-
-@push('styles')
-    <link href="{{ asset('backend/css/bootstrap-datepicker.css') }}" rel="stylesheet">
-@endpush
-
-@push('scripts')
-    <script src="{{ asset('backend/js/bootstrap-datepicker.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('.datepicker').datepicker({
-                format: 'yyyy',
-                viewMode: 'years',
-                minViewMode: 'years'
-            });
-        });
-    </script>
-@endpush
