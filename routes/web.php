@@ -10,6 +10,7 @@ use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\CobaController;
 
 // ACARA 3
 
@@ -191,7 +192,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// ACARA 17
+// ACARA 17 & 18
 
 Route::get('/session/create', [SessionController::class, 'create']);
 Route::get('/session/show', [SessionController::class, 'show']);
@@ -200,3 +201,5 @@ Route::get('/session/delete', [SessionController::class, 'delete']);
 Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);
 Route::get('/formulir', [PegawaiController::class, 'formulir']);
 Route::post('/formulir/proses', [PegawaiController::class, 'proses']);
+Route::get('/cobaerror', [CobaController::class, 'index']);
+Route::get('/cobaerror/{nama}', [CobaController::class, 'index']);
