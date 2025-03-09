@@ -11,6 +11,7 @@ use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\CobaController;
+use App\Http\Controllers\UploadController;
 
 // ACARA 3
 
@@ -203,3 +204,11 @@ Route::get('/formulir', [PegawaiController::class, 'formulir']);
 Route::post('/formulir/proses', [PegawaiController::class, 'proses']);
 Route::get('/cobaerror', [CobaController::class, 'index']);
 Route::get('/cobaerror/{nama}', [CobaController::class, 'index']);
+
+// BATAS AKHIR ACARA 17 & 18
+
+// ACARA 19
+Route::get('/upload', [UploadController::class, 'upload']);
+Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
+Route::get('/upload/resize', [UploadController::class, 'uploadresize'])->name('upload.resize');
+Route::post('/upload/resize/proses', [UploadController::class, 'proses_upload_resize'])->name('upload.proses.resize');
