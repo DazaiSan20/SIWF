@@ -208,7 +208,17 @@ Route::get('/cobaerror/{nama}', [CobaController::class, 'index']);
 // BATAS AKHIR ACARA 17 & 18
 
 // ACARA 19
+
 Route::get('/upload', [UploadController::class, 'upload']);
 Route::post('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload.proses');
 Route::get('/upload/resize', [UploadController::class, 'uploadresize'])->name('upload.resize');
 Route::post('/upload/resize/proses', [UploadController::class, 'proses_upload_resize'])->name('upload.proses.resize');
+
+// BATAS AKHIHR ACARA 19
+
+// ACARA 20
+
+Route::get('/dropzone', [UploadController::class, 'dropzone']);
+Route::post('/dropzone/store', [UploadController::class, 'dropzone_store'])->name('dropzone.store');
+Route::get('/pdfupload', [UploadController::class, 'pdfupload']);
+Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');
